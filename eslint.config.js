@@ -16,7 +16,8 @@ export default [
     rules: {
       semi: ['error', 'never'],
       quotes: ['error', 'single'],
-      'react/react-in-jsx-scope': 'off'
+      'react/react-in-jsx-scope': 'off',
+      'max-lines': ['error', { 'max': 120, 'skipComments': true }]
     }
   },
 ]
