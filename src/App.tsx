@@ -1,10 +1,10 @@
-import { Header } from "./components/Header"
+import { Dashboard } from './screens/dashboard'
 
 function App() {
 
   return (
     <>
-      <Header />
+      <Dashboard />
     </>
   )
 }
