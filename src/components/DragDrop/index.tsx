@@ -69,7 +69,7 @@ export function GridArea({ strategy, cardItem }: GridProps) {
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
       onDragCancel={handleDragCancel}
-	  autoScroll
+	    autoScroll
     >
       <SortableContext items={items} strategy={strategyDragDrop}>
         {strategy === 'vertical' && (

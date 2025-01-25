@@ -1,6 +1,7 @@
 import { Button } from '../../components/Button'
 import { GridArea } from '../../components/DragDrop'
 import { Header } from '../../components/Header'
+import { AddNewCard } from '../../components/Modal/AddNewCard/indxe'
 
 
 export function Dashboard() {
@@ -52,6 +53,7 @@ export function Dashboard() {
 			  </div>
 			</div>
 		  </main>
+		  <AddNewCard />
 		</>
 	)
 }
