@@ -18,6 +18,7 @@ export const CardItem = forwardRef<HTMLDivElement, CardItemProps>(({ children, w
         cursor: isDragging ? 'grabbing' : 'grab',
         backgroundColor: '#ffffff',
         display: 'flex',
+        flexShrink: 0,
         justifyContent: 'center',
         alignItems: 'center',
         boxShadow: isDragging  ? 'rgb(63 63 68 / 5%) 0px 2px 0px 2px, rgb(34 33 81 / 15%) 0px 2px 3px 2px' : 'rgb(63 63 68 / 5%) 0px 0px 0px 1px, rgb(34 33 81 / 15%) 0px 1px 3px 0px',
