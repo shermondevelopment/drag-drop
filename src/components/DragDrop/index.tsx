@@ -55,6 +55,11 @@ export function GridArea({ strategy, cardItem }: GridProps) {
     setActiveId(null)
   }, [])
 
+  const onDeleteCard = (id: number) => {
+    const filterItems = items.filter((item) => item.id !== id)
+    setItems(filterItems)
+  }
+
   const strategyDragDrop = strategy === 'vertical' ? rectSortingStrategy : horizontalListSortingStrategy
 
   return (
@@ -70,7 +75,7 @@ export function GridArea({ strategy, cardItem }: GridProps) {
         {strategy === 'vertical' && (
           <Grid columns={5}>
             {items.map((item) => (
-              <SortableCardItem key={item.id} id={item.id as never}>
+              <SortableCardItem key={item.id} id={item.id as never} onDelete={onDeleteCard}>
                 {item.title}
               </SortableCardItem>
             ))}
@@ -79,7 +84,7 @@ export function GridArea({ strategy, cardItem }: GridProps) {
         {strategy === 'horizontal' && (
           <Carrousel>
             {items.map((item) => (
-              <SortableCardItem key={item.id} id={item.id as never}>
+              <SortableCardItem key={item.id} id={item.id as never} >
                 {item.title}
               </SortableCardItem>
             ))}

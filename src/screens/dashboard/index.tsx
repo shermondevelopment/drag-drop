@@ -1,3 +1,4 @@
+import { Button } from '../../components/Button'
 import { GridArea } from '../../components/DragDrop'
 import { Header } from '../../components/Header'
 
@@ -37,6 +38,9 @@ export function Dashboard() {
 			<div className="flex w-full flex-col">
 			  <Header />
 			  <div className="box-border flex size-full flex-col justify-center gap-10 p-9">
+				<div>
+					<Button>Adicionar</Button>
+				</div>
 				 <div className="flex-1">
 					<GridArea strategy='vertical'  cardItem={itemsGrid} />
 				 </div>
