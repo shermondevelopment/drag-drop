@@ -33,7 +33,7 @@ export const CardItem = forwardRef<HTMLDivElement, CardItemProps>(
     }
 
     return (
-      <div style={inlineStyles} {...props} ref={ref} className="grid-cols-2">
+      <div style={inlineStyles} {...props} ref={ref} className="select-none">
         {children}
       </div>
     )

@@ -65,7 +65,6 @@ export function GridArea({ strategy, itemsCard, setItemsCard }: GridProps) {
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
       onDragCancel={handleDragCancel}
-	    autoScroll
     >
       <SortableContext items={itemsCard} strategy={strategyDragDrop}>
         {strategy === 'vertical' && (
@@ -87,7 +86,7 @@ export function GridArea({ strategy, itemsCard, setItemsCard }: GridProps) {
           </Carrousel>
         )}
       </SortableContext>
-      <DragOverlay adjustScale style={{ transformOrigin: '0 0 ' }}>
+      <DragOverlay adjustScale>
         {activeId ? <CardItem id={activeId as never} isDragging /> : null}
       </DragOverlay>
     </DndContext>
