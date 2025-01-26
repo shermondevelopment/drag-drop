@@ -42,11 +42,11 @@ export function Dashboard() {
 				<div>
 					<Button>Adicionar</Button>
 				</div>
-				 <div className="flex-1">
+				 <div className="flex-1 overflow-hidden">
 					<GridArea strategy='vertical'  cardItem={itemsGrid} />
 				 </div>
 				 <div className="flex justify-center">
-					<div className="flex h-[200px] w-full max-w-[1200px] items-center justify-center overflow-x-hidden  border-8  border-dashed">
+					<div className="flex h-[200px] w-full items-center justify-center overflow-x-hidden md:max-w-[70vw]">
 						<GridArea  strategy='horizontal' cardItem={itemsCarrousel}/>
 					</div>
 				 </div>

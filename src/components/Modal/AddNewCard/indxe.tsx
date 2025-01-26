@@ -18,7 +18,7 @@ export function AddNewCard() {
       id="crud-modal"
       tabIndex={-1}
       aria-hidden="true"
-      className="fixed inset-x-0 top-0 z-50 flex h-[calc(100vh)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black/70 md:inset-0"
+      className="fixed inset-x-0 top-0 z-50  hidden h-[calc(100vh)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black/70 md:inset-0"
     >
       <div className="relative max-h-full w-full max-w-md p-4">
         <div className="relative rounded-lg bg-white shadow-sm">
