@@ -1,24 +1,46 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { CardItemType } from '../../../screens/dashboard'
+import { X } from 'lucide-react'
 
-export function AddNewCard() {
+export interface AddNewCardProps {
+  setItemsGrid: React.Dispatch<React.SetStateAction<CardItemType[]>>;
+  itemsGrid: CardItemType[];
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  openModal: boolean;
+}
+
+export function AddNewCard({ setItemsGrid, itemsGrid, openModal, setOpenModal }: AddNewCardProps) {
   const [titleCard, setTitleCard] = useState('')
   const [line, setLine] = useState(1)
   const [cols, setCols] = useState(1)
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    console.log(titleCard)
-    console.log(line)
-    console.log(cols)
-    console.log(event)
+    const id = itemsGrid.length
+
+    const newCard = {
+      id,
+      col: cols,
+      row: line,
+      title: titleCard,
+    }
+    setItemsGrid([...itemsGrid, newCard])
+    setTitleCard('')
+    setLine(1)
+    setCols(1)
+    setOpenModal((prevValue) => !prevValue)
   }
+
+  useEffect(() => {
+    console.log('dentro do add new card', itemsGrid)
+  }, [itemsGrid])
 
   return (
     <div
       id="crud-modal"
       tabIndex={-1}
       aria-hidden="true"
-      className="fixed inset-x-0 top-0 z-50  hidden h-[calc(100vh)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black/70 md:inset-0"
+      className={`fixed inset-x-0 top-0  z-50 ${openModal ? 'flex' : 'hidden'} h-[calc(100vh)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black/70`}
     >
       <div className="relative max-h-full w-full max-w-md p-4">
         <div className="relative rounded-lg bg-white shadow-sm">
@@ -26,24 +48,11 @@ export function AddNewCard() {
             <h3 className="text-center text-lg font-semibold text-gray-900">Adicionar novo card</h3>
             <button
               type="button"
+              onClick={() => setOpenModal(false)}
               className="ms-auto inline-flex size-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900"
               data-modal-toggle="crud-modal"
             >
-              <svg
-                className="size-3"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 14"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                />
-              </svg>
+              <X />
               <span className="sr-only">Close modal</span>
             </button>
           </div>
@@ -56,6 +65,8 @@ export function AddNewCard() {
                 <input
                   type="text"
                   name="name"
+                  value={titleCard}
+                  minLength={4}
                   id="name"
                   onChange={(e) => setTitleCard(e.currentTarget.value)}
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900"
@@ -69,12 +80,13 @@ export function AddNewCard() {
                 </label>
                 <input
                   type="number"
-                  name="price"
-                  id="price"
+                  name="line"
+                  id="line"
+                  value={line}
                   min={1}
                   onChange={(e) => setLine(+e.currentTarget.value)}
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900"
-                  placeholder="$2999"
+                  placeholder="1"
                   required
                 />
               </div>
@@ -84,11 +96,12 @@ export function AddNewCard() {
                 </label>
                 <input
                   type="number"
-                  name="price"
-                  id="price"
-				  onChange={(e) => setCols(+e.currentTarget.value)}
+                  name="cols"
+                  id="cols"
+                  value={cols}
+                  onChange={(e) => setCols(+e.currentTarget.value)}
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900"
-				  min={1}
+                  min={1}
                   placeholder="1"
                   required={true}
                 />
@@ -98,18 +111,6 @@ export function AddNewCard() {
               type="submit"
               className="inline-flex items-center rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
             >
-              <svg
-                className="-ms-1 me-1 size-5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
               Adicionar
             </button>
           </form>

@@ -5,6 +5,8 @@ export type CardItemProps = React.HTMLAttributes<HTMLDivElement> & {
   withOpacity?: boolean;
   isDragging?: boolean;
   onDelete?: (id: number) => void
+  col?: number
+  row?: number
 };
 
 // eslint-disable-next-line react/display-name
@@ -13,8 +15,8 @@ export const CardItem = forwardRef<HTMLDivElement, CardItemProps>(
     const inlineStyles: CSSProperties = {
       opacity: withOpacity ? '0.5' : '1',
       transformOrigin: '50% 50%',
-      height: '140px',
-      width: '300px',
+      minHeight: '140px',
+      height: '100%',
       borderRadius: '10px',
       cursor: isDragging ? 'grabbing' : 'grab',
       backgroundColor: '#ffffff',
@@ -31,7 +33,7 @@ export const CardItem = forwardRef<HTMLDivElement, CardItemProps>(
     }
 
     return (
-      <div style={inlineStyles} {...props} ref={ref}>
+      <div style={inlineStyles} {...props} ref={ref} className="grid-cols-2">
         {children}
       </div>
     )

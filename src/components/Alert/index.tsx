@@ -28,6 +28,7 @@ export function Alert({ visible, onDelete, setVisibleModal }: AlertProp) {
         <div className="relative rounded-lg bg-white  p-4 text-center">
           <button
             type="button"
+            onClick={() => setVisibleModal((prevValue) => !prevValue)}
             className="absolute right-2.5 top-2.5 ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200  dark:hover:bg-gray-600 dark:hover:text-white"
             data-modal-toggle="deleteModal"
           >

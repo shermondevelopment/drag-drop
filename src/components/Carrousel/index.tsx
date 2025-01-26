@@ -32,7 +32,7 @@ export function Carrousel({ children }: CarrouselProps) {
       autoPlay
       draggable={false}
       responsive={responsive}
-      className="size-full flex-1 rounded-md bg-[#ECEDF0] px-5"
+      className="size-full flex-1 gap-7 rounded-md bg-[#ECEDF0] px-5"
       pauseOnHover
       swipeable={false}
     >

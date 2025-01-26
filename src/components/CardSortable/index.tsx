@@ -2,7 +2,7 @@ import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import { CardItem, CardItemProps } from '../Card'
 import { X } from 'lucide-react'
-import { useState } from 'react'
+import { CSSProperties, useState } from 'react'
 import { Alert } from '../Alert'
 
 export function SortableCardItem(props: CardItemProps) {
@@ -16,11 +16,17 @@ export function SortableCardItem(props: CardItemProps) {
   const [showButtonDelete, setShowButtonDelete] = useState(false)
   const [visibleModal, setVisibleModal] = useState(false)
 
+  const styleContainer: CSSProperties = {
+    gridColumn: props.col ? `span ${props.col}` : 'auto',
+    gridRow: props.row ? `span ${props.row}` : 'auto',
+  }
+
   return (
     <div
-      className="relative w-max"
+      className="relative"
       onMouseEnter={() => setShowButtonDelete(true)}
       onMouseLeave={() => setShowButtonDelete(false)}
+      style={styleContainer}
     >
       <CardItem ref={setNodeRef} style={style} withOpacity={isDragging} {...props} {...attributes} {...listeners} />
       {showButtonDelete && props.onDelete && (

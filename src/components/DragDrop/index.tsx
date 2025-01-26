@@ -15,20 +15,16 @@ import { Grid } from '../Grid'
 import { CardItem } from '../Card'
 import SortableCardItem from '../CardSortable'
 import { Carrousel } from '../Carrousel'
+import { CardItemType } from '../../screens/dashboard'
 
-export interface CardItems {
-  id: number;
-  col: number;
-  row: number;
-  title: string;
-}
+
 export interface GridProps {
   strategy: 'horizontal' | 'vertical';
-  cardItem: CardItems[];
+  setItemsCard: React.Dispatch<React.SetStateAction<CardItemType[]>>;
+  itemsCard: CardItemType[];
 }
 
-export function GridArea({ strategy, cardItem }: GridProps) {
-  const [items, setItems] = useState(cardItem)
+export function GridArea({ strategy, itemsCard, setItemsCard }: GridProps) {
 
   const [activeId, setActiveId] = useState<string | null>(null)
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor))
@@ -41,7 +37,7 @@ export function GridArea({ strategy, cardItem }: GridProps) {
     const { active, over } = event
 
     if (active.id !== over?.id) {
-      setItems((items) => {
+      setItemsCard((items) => {
         const oldIndex = items.findIndex((item) => item.id === active.id)
         const newIndex = items.findIndex((item) => item.id === over?.id)
         return arrayMove(items, oldIndex, newIndex)
@@ -56,8 +52,8 @@ export function GridArea({ strategy, cardItem }: GridProps) {
   }, [])
 
   const onDeleteCard = (id: number) => {
-    const filterItems = items.filter((item) => item.id !== id)
-    setItems(filterItems)
+    const filterItems = itemsCard.filter((item) => item.id !== id)
+    setItemsCard(filterItems)
   }
 
   const strategyDragDrop = strategy === 'vertical' ? rectSortingStrategy : horizontalListSortingStrategy
@@ -71,11 +67,11 @@ export function GridArea({ strategy, cardItem }: GridProps) {
       onDragCancel={handleDragCancel}
 	    autoScroll
     >
-      <SortableContext items={items} strategy={strategyDragDrop}>
+      <SortableContext items={itemsCard} strategy={strategyDragDrop}>
         {strategy === 'vertical' && (
           <Grid columns={4}>
-            {items.map((item) => (
-              <SortableCardItem key={item.id} id={item.id as never} onDelete={onDeleteCard}>
+            {itemsCard.map((item) => (
+              <SortableCardItem key={item.id} id={item.id as never} onDelete={onDeleteCard} col={item.col} row={item.row}>
                 {item.title}
               </SortableCardItem>
             ))}
@@ -83,8 +79,8 @@ export function GridArea({ strategy, cardItem }: GridProps) {
         )}
         {strategy === 'horizontal' && (
           <Carrousel>
-            {items.map((item) => (
-              <SortableCardItem key={item.id} id={item.id as never} >
+            {itemsCard.map((item) => (
+              <SortableCardItem key={item.id} id={item.id as never} style={{ width: 300 }}>
                 {item.title}
               </SortableCardItem>
             ))}
