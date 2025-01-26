@@ -23,19 +23,23 @@ export function SortableCardItem(props: CardItemProps) {
       onMouseLeave={() => setShowButtonDelete(false)}
     >
       <CardItem ref={setNodeRef} style={style} withOpacity={isDragging} {...props} {...attributes} {...listeners} />
-      {(showButtonDelete && props.onDelete) && (
+      {showButtonDelete && props.onDelete && (
         <button
-          id="deleteButton" 
-          data-modal-target="deleteModal" 
+          id="deleteButton"
+          data-modal-target="deleteModal"
           data-modal-toggle="deleteModal"
           className="absolute right-2 top-2 flex size-9 cursor-pointer items-center justify-center rounded-full  shadow-md"
-          onClick={() => props.onDelete ? setVisibleModal(true) : undefined}
+          onClick={() => (props.onDelete ? setVisibleModal(true) : undefined)}
         >
           <X className="text-red-500" />
         </button>
       )}
       {props.onDelete !== undefined && (
-        <Alert visible={visibleModal} onDelete={() => props.onDelete ? props.onDelete(props.id) : undefined} setVisibleModal={setVisibleModal} />
+        <Alert
+          visible={visibleModal}
+          onDelete={() => (props.onDelete ? props.onDelete(props.id) : undefined)}
+          setVisibleModal={setVisibleModal}
+        />
       )}
     </div>
   )

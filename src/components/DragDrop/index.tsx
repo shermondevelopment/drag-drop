@@ -73,7 +73,7 @@ export function GridArea({ strategy, cardItem }: GridProps) {
     >
       <SortableContext items={items} strategy={strategyDragDrop}>
         {strategy === 'vertical' && (
-          <Grid columns={5}>
+          <Grid columns={4}>
             {items.map((item) => (
               <SortableCardItem key={item.id} id={item.id as never} onDelete={onDeleteCard}>
                 {item.title}
