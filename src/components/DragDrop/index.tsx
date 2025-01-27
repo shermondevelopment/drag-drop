@@ -58,7 +58,6 @@ export function GridArea({ strategy, itemsCard, setItemsCard }: GridProps) {
 
   const strategyDragDrop = strategy === 'vertical' ? rectSortingStrategy : horizontalListSortingStrategy
 
-  console.log('o que é active id', activeId)
 
   return (
     <DndContext
