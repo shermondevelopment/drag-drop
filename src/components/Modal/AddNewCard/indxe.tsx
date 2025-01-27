@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { CardItemType } from '../../../screens/dashboard'
 import { X } from 'lucide-react'
+import { Button } from '../../Button'
 
 export interface AddNewCardProps {
   setItemsGrid: React.Dispatch<React.SetStateAction<CardItemType[]>>;
@@ -42,7 +43,7 @@ export function AddNewCard({ setItemsGrid, itemsGrid, openModal, setOpenModal }:
         <div className="relative rounded-lg bg-white shadow-sm">
           <div className="flex items-center justify-between rounded-t border-b border-gray-200 p-4 md:p-5">
             <h3 className="text-center text-lg font-semibold text-gray-900">Adicionar novo card</h3>
-            <button
+            <Button
               type="button"
               onClick={() => setOpenModal(false)}
               className="ms-auto inline-flex size-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900"
@@ -50,7 +51,7 @@ export function AddNewCard({ setItemsGrid, itemsGrid, openModal, setOpenModal }:
             >
               <X />
               <span className="sr-only">Close modal</span>
-            </button>
+            </Button>
           </div>
           <form className="p-4 md:p-5" onSubmit={onSubmit}>
             <div className="mb-4 grid grid-cols-2 gap-4">
@@ -103,12 +104,12 @@ export function AddNewCard({ setItemsGrid, itemsGrid, openModal, setOpenModal }:
                 />
               </div>
             </div>
-            <button
+            <Button
               type="submit"
               className="inline-flex items-center rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
             >
               Adicionar
-            </button>
+            </Button>
           </form>
         </div>
       </div>
