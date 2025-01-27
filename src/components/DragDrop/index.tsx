@@ -58,6 +58,8 @@ export function GridArea({ strategy, itemsCard, setItemsCard }: GridProps) {
 
   const strategyDragDrop = strategy === 'vertical' ? rectSortingStrategy : horizontalListSortingStrategy
 
+  console.log('o que é active id', activeId)
+
   return (
     <DndContext
       sensors={sensors}
@@ -87,7 +89,7 @@ export function GridArea({ strategy, itemsCard, setItemsCard }: GridProps) {
         )}
       </SortableContext>
       <DragOverlay adjustScale>
-        {activeId ? <CardItem id={activeId as never} isDragging /> : null}
+        {activeId !== null ? <CardItem id={activeId as never} isDragging /> : null}
       </DragOverlay>
     </DndContext>
   )
