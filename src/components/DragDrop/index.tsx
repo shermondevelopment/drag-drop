@@ -18,13 +18,13 @@ import { Carrousel } from '../Carrousel'
 import { CardItemType } from '../../screens/dashboard'
 
 
-export interface GridProps {
+export interface DragDropProps {
   strategy: 'horizontal' | 'vertical';
   setItemsCard: React.Dispatch<React.SetStateAction<CardItemType[]>>;
   itemsCard: CardItemType[];
 }
 
-export function GridArea({ strategy, itemsCard, setItemsCard }: GridProps) {
+export function DragDrop({ strategy, itemsCard, setItemsCard }: DragDropProps) {
 
   const [activeId, setActiveId] = useState<string | null>(null)
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor))

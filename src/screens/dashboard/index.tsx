@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Button } from '../../components/Button'
-import { GridArea } from '../../components/DragDrop'
+import { DragDrop } from '../../components/DragDrop'
 import { Header } from '../../components/Header'
 import { AddNewCard } from '../../components/Modal/AddNewCard/indxe'
 
@@ -51,12 +51,12 @@ export function Dashboard() {
 				</div>
 				 <div className="flex w-full  justify-center overflow-x-hidden">
 					<div className="w-full rounded-md bg-[#ECEDF0] p-5 md:max-w-[70vw] ">
-					  <GridArea strategy='vertical'  setItemsCard={setItemsGrid} itemsCard={itemsGrid} />
+					  <DragDrop strategy='vertical'  setItemsCard={setItemsGrid} itemsCard={itemsGrid} />
 					</div>
 				 </div>
 				 <div className="flex justify-center">
 					<div className="flex h-[200px] w-full items-center justify-center overflow-x-hidden md:max-w-[70vw]">
-						<GridArea  strategy='horizontal' setItemsCard={setItemCarrousel} itemsCard={itemsCarrousel} />
+						<DragDrop  strategy='horizontal' setItemsCard={setItemCarrousel} itemsCard={itemsCarrousel} />
 					</div>
 				 </div>
 			  </div>
