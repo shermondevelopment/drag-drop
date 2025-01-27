@@ -31,10 +31,6 @@ export function AddNewCard({ setItemsGrid, itemsGrid, openModal, setOpenModal }:
     setOpenModal((prevValue) => !prevValue)
   }
 
-  useEffect(() => {
-    console.log('dentro do add new card', itemsGrid)
-  }, [itemsGrid])
-
   return (
     <div
       id="crud-modal"
