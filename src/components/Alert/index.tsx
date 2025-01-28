@@ -24,9 +24,9 @@ export function Alert({ visible, onDelete, setVisibleModal }: AlertProp) {
       id="deleteModal"
       tabIndex={-1}
       aria-hidden="true"
-      className={`fixed inset-x-0 top-0 z-50  w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black/70 md:inset-0 md:h-full ${visible ? 'flex' : 'hidden'}`}
+      className={`fixed inset-x-0 top-0 z-50  h-screen w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black/70 md:inset-0 md:h-full ${visible ? 'flex' : 'hidden'}`}
     >
-      <div className="relative size-full max-w-md  p-4 md:h-auto">
+      <div className="relative size-full  max-w-md p-4 md:h-auto">
         <div className="relative rounded-lg bg-white  p-4 text-center">
           <Button
             type="button"

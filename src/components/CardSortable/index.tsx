@@ -4,6 +4,7 @@ import { CardItem, CardItemProps } from '../Card'
 import { X } from 'lucide-react'
 import { CSSProperties, useState } from 'react'
 import { Alert } from '../Alert'
+import { twMerge } from 'tailwind-merge'
 
 export function SortableCardItem(props: CardItemProps) {
   const { isDragging, attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: props.id })
@@ -23,7 +24,7 @@ export function SortableCardItem(props: CardItemProps) {
 
   return (
     <div
-      className="relative"
+      className={twMerge('relative card-container')}
       onMouseEnter={() => setShowButtonDelete(true)}
       onMouseLeave={() => setShowButtonDelete(false)}
       style={styleContainer}

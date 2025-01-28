@@ -9,3 +9,9 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+@media screen and (max-width: 700px) {
+  .card-container {
+    grid-column: 1 !important;
+  }
+}
